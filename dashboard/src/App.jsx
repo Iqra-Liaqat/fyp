@@ -143,7 +143,11 @@ function CodeTab({ run }) {
 }
 
 function Stage({ run, config, tab, setTab }) {
-  const previewUrl = run?.preview ? `http://${window.location.hostname}:${config?.preview_port ?? 4001}${run.preview.url}` : null;
+  const previewUrl = run?.preview
+    ? (['localhost', '127.0.0.1'].includes(window.location.hostname)
+        ? `http://${window.location.hostname}:${config?.preview_port ?? 4001}${run.preview.url}`
+        : `${window.location.origin}${run.preview.url}`)
+    : null;
   const status = run?.status;
   const current = run && Object.values(run.stages).find((s) => s.status === 'running');
   let banner = null;
