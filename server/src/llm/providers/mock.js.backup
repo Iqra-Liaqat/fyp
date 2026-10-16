@@ -1,0 +1,16 @@
+/** Deterministic provider for tests and offline development. `responses` is a queue of strings, objects or functions. */
+export function createMockProvider({ responses = [] } = {}) {
+  const queue = [...responses];
+  const calls = [];
+  return {
+    name: 'mock',
+    calls,
+    async complete(request) {
+      calls.push(request);
+      const next = queue.length ? queue.shift() : '';
+      const value = typeof next === 'function' ? await next(request) : next;
+      const base = { text: '', toolCalls: [], usage: { input_tokens: 0, output_tokens: 0 } };
+      return typeof value === 'string' ? { ...base, text: value } : { ...base, ...value };
+    },
+  };
+}

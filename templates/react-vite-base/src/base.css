@@ -1,0 +1,6 @@
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: #1f2937; background: #fff; }
+img, svg { max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+.fatal-error { margin: 2rem; padding: 1rem; background: #fef2f2; color: #991b1b; white-space: pre-wrap; }

@@ -1,0 +1,22 @@
+{
+  "scenarios": [
+    {
+      "id": "demo-task-manager",
+      "title": "Student Task Manager",
+      "expected_project_type": "task_manager",
+      "client_text": "Create a student task management web application where students can add tasks, mark tasks complete, delete tasks and filter tasks."
+    },
+    {
+      "id": "demo-restaurant",
+      "title": "Restaurant Website",
+      "expected_project_type": "restaurant_website",
+      "client_text": "Create a modern restaurant website with a hero section, a menu with prices, opening hours, a contact section and a table reservation form."
+    },
+    {
+      "id": "demo-agency",
+      "title": "Digital Marketing Agency",
+      "expected_project_type": "business_website",
+      "client_text": "Create a website for a digital marketing agency with services, pricing, portfolio, a contact form and a call-to-action section."
+    }
+  ]
+}
