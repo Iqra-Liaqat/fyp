@@ -13,11 +13,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "dev:server": "npm run dev -w server",
-    "dev:dashboard": "npm run dev -w dashboard",
-    "test": "npm test -w shared && npm test -w server",
-    "setup": "npm install --prefix templates/react-vite-base --no-audit --no-fund",
-    "dev": "node scripts/dev.js",
-    "start": "npm run start -w server"
-  }
+  "start": "cd server && npm install && node index.js"
+}
+
 }

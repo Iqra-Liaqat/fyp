@@ -8,6 +8,7 @@ import { createWorkspace } from './workspace/workspaceManager.js';
 import { createBuilder } from './validation/buildRunner.js';
 import { createOrchestrator } from './pipeline/orchestrator.js';
 import { createApp } from './app.js';
+import { createPreviewServer } from './preview/previewServer.js';
 
 loadDotenv();
 const config = loadConfig();
@@ -28,3 +29,6 @@ app.listen(process.env.PORT || config.PORT, '0.0.0.0', () =>
 console.log(`[llm]     provider=${config.LLM_PROVIDER} configured=${config.llmConfigured} planner=${config.LLM_MODEL_PLANNER || '-'} coder=${config.LLM_MODEL_CODER || '-'}`);
 if (!config.llmConfigured) console.warn('[llm]     No LLM_API_KEY set: copy .env.example to .env and add your key.');
 if (!(await workspace.templateReady())) console.warn('[setup]   Template dependencies missing: run "npm run setup" once.');
+createPreviewServer({ config }).listen(config.PREVIEW_PORT, '0.0.0.0', () =>
+  console.log(`[preview] http://localhost:${config.PREVIEW_PORT}/preview/<run-id>/`)
+);
